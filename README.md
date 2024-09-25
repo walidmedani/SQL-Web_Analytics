@@ -13,8 +13,8 @@ Dataset Description
 
 ```mermaid
 graph TD;
-    Sessions-->B;
-    A-->C;
+    Sessions-->Orders;
+    Sessions-->Pageviews;
     B-->D;
     C-->D;
 ```
