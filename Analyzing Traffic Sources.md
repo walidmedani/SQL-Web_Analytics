@@ -4,7 +4,7 @@ This query identifies the top traffic sources driving sessions to the website by
 utm_source: Source of traffic (e.g., Google, Facebook).
 utm_campaign: Campaign name associated with the traffic.
 http_referer: The URL from where the session originated.
-```SQL
+```MYSQL
 SELECT 
 	ws.utm_source ,
 	ws.utm_campaign ,
@@ -36,7 +36,7 @@ GROUP BY
 	1
 ORDER BY sessions DESC;
 ```
-```
+```MYSQL
 SELECT 
 	count(DISTINCT ws.website_session_id) AS sessions ,
 	count(DISTINCT o.order_id) AS orders,
