@@ -3,7 +3,8 @@ FROM website_sessions ws ;
 
 -- Finding top traffic sources
 
-```SELECT 
+```
+SELECT 
 	ws.utm_source ,
 	ws.utm_campaign ,
 	ws.http_referer ,
@@ -17,6 +18,7 @@ ORDER BY 4 DESC;
 ```
 
 -- Finding traffic source conversion
+```
 SELECT 
 	ws.utm_content ,
 	count(DISTINCT ws.website_session_id) AS sessions ,
@@ -29,7 +31,7 @@ WHERE ws.website_session_id BETWEEN 1000 AND 2000
 GROUP BY 
 	1
 ORDER BY sessions DESC;
-
+```
 
 SELECT 
 	count(DISTINCT ws.website_session_id) AS sessions ,
