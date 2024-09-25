@@ -9,3 +9,9 @@ Dataset Description
 - Website Sessions (website_sessions): Contains session data including the source of traffic, campaign tags, and device information.
 - Orders (orders): Includes order details such as session IDs, product information, and order conversion data.
 - Website Pageviews (website_pageviews): Captures information on individual page views during each session.
+
+```mermaid
+graph TD;
+    Website Sessions -->Orders;
+    Website Sessions-->Website Pageviews;
+```
