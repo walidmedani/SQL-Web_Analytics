@@ -1,8 +1,9 @@
-SELECT *
-FROM website_sessions ws ;
+# Finding top traffic sources
+This query identifies the top traffic sources driving sessions to the website by grouping data by source, campaign, and referrer. It helps determine which marketing campaigns and traffic sources were most effective in generating website visits.
 
--- Finding top traffic sources
-
+utm_source: Source of traffic (e.g., Google, Facebook).
+utm_campaign: Campaign name associated with the traffic.
+http_referer: The URL from where the session originated.
 ```
 SELECT 
 	ws.utm_source ,
@@ -17,7 +18,10 @@ GROUP BY 1,
 ORDER BY 4 DESC;
 ```
 
--- Finding traffic source conversion
+# Finding traffic source conversion
+This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
+
+LEFT JOIN with orders ensures all sessions are included, even those without an order.
 ```
 SELECT 
 	ws.utm_content ,
@@ -32,7 +36,7 @@ GROUP BY
 	1
 ORDER BY sessions DESC;
 ```
-
+```
 SELECT 
 	count(DISTINCT ws.website_session_id) AS sessions ,
 	count(DISTINCT o.order_id) AS orders,
@@ -44,7 +48,7 @@ WHERE ws.created_at < '2012-04-14'
 	  AND ws.utm_source = 'gsearch'
 	  AND ws.utm_campaign = 'nonbrand'
 ORDER BY 3 DESC;
-
+```
 -- Traffic source trending
 SELECT
 	YEAR(ws.created_at) ,
