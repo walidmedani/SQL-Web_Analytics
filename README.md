@@ -1,4 +1,5 @@
-# Project Overview: Web Analytics for Marketing Optimization
+# Project Overview: 
+## Web Analytics for Marketing Optimization
 In this project, I analyzed website session and conversion data to provide insights into the performance of different traffic sources, user behavior, and the effectiveness of marketing campaigns. By leveraging SQL to extract, analyze, and visualize this data, I uncovered trends and actionable insights to optimize marketing efforts and improve conversion rates.
 
 # Objective
