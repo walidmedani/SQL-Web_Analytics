@@ -50,6 +50,7 @@ WHERE ws.created_at < '2012-04-14'
 ORDER BY 3 DESC;
 ```
 -- Traffic source trending
+```MYSQL
 SELECT
 	YEAR(ws.created_at) ,
 	WEEK(ws.created_at) ,
@@ -58,8 +59,9 @@ SELECT
 FROM website_sessions ws 
 WHERE ws.website_session_id BETWEEN 100000 AND 115000
 GROUP BY 1,2;
+```
 
-
+```MYSQL
 SELECT 
 	MIN(DATE(ws.created_at)) AS week_start , 
 	count(DISTINCT ws.website_session_id) AS sessions
@@ -70,8 +72,9 @@ WHERE WS.created_at < '2012-05-10'
 GROUP BY 
 	YEAR(ws.created_at) ,
 	WEEK(ws.created_at);
-
+```
 -- Bid optimization for paid traffic
+```MYSQL
 SELECT
 	ws.device_type ,
 	count(DISTINCT ws.website_session_id) AS sessions ,
@@ -85,8 +88,9 @@ WHERE ws.created_at < '2012-04-15'
 		AND ws.utm_campaign = 'nonbrand'
 GROUP BY 1
 ORDER BY 3 DESC;
-
+```
 -- Trending w/ granular segments
+```MYSQL
 SELECT 
 	MIN(DATE(ws.created_at)) AS week_start ,
 	COUNT(DISTINCT CASE WHEN WS.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) AS dtop_sesssions,
@@ -99,5 +103,4 @@ WHERE ws.created_at < '2012-06-09'
 GROUP BY 
 	YEAR(ws.created_at) ,
 	WEEK(ws.created_at);
-
-SELECT * FROM website_sessions ws 
+```
