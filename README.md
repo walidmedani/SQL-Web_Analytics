@@ -15,3 +15,15 @@ graph TD;
     Website Sessions -->Orders;
     Website Sessions-->Website Pageviews;
 ```
+
+```mermaid
+  info
+```
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
