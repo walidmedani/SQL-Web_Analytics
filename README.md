@@ -15,6 +15,4 @@ Dataset Description
 graph TD;
     Sessions-->Orders;
     Sessions-->Pageviews;
-    B-->D;
-    C-->D;
 ```
