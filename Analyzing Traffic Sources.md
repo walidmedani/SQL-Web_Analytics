@@ -4,7 +4,7 @@ This query identifies the top traffic sources driving sessions to the website by
 utm_source: Source of traffic (e.g., Google, Facebook).
 utm_campaign: Campaign name associated with the traffic.
 http_referer: The URL from where the session originated.
-```
+```SQL
 SELECT 
 	ws.utm_source ,
 	ws.utm_campaign ,
@@ -22,7 +22,7 @@ ORDER BY 4 DESC;
 This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
 
 LEFT JOIN with orders ensures all sessions are included, even those without an order.
-```
+```MYSQL
 SELECT 
 	ws.utm_content ,
 	count(DISTINCT ws.website_session_id) AS sessions ,
