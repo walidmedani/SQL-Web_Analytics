@@ -95,8 +95,7 @@ SELECT
 FROM website_sessions ws 
 	LEFT JOIN orders o 
 	ON o.website_session_id = ws.website_session_id
-WHERE ws.created_at < '2012-04-15'
-	AND ws.utm_source = 'gsearch'
+WHERE ws.utm_source = 'gsearch'
 		AND ws.utm_campaign = 'nonbrand'
 GROUP BY 1
 ORDER BY 3 DESC;
@@ -114,9 +113,7 @@ SELECT
 	COUNT(DISTINCT CASE WHEN WS.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) AS dtop_sesssions,
 	count(DISTINCT CASE WHEN WS.device_type = 'mobile' THEN ws.website_session_id ELSE NULL END) AS mob_sessions
 FROM website_sessions ws 
-WHERE ws.created_at < '2012-06-09'
-	AND ws.created_at > '2012-04-15'
-	AND ws.utm_source = 'gsearch'
+WHERE ws.utm_source = 'gsearch'
 		AND ws.utm_campaign = 'nonbrand'
 GROUP BY 
 	YEAR(ws.created_at) ,
