@@ -14,6 +14,12 @@ Dataset Description
 
 ```mermaid
 graph TD;
-    Web_Sessions-->Orders;
-    Web_Sessions-->Pageviews;
+    Web_Sessions-->session_id;
+    Web_Sessions-->user_id;
+    Web_Sessions-->is_repeat_session;
+    Web_Sessions-->utm_source;
+    Web_Sessions-->utm_campaign;
+    Web_Sessions-->utm_content;
+    Web_Sessions-->device_type;
+    Web_Sessions-->http_referer;
 ```
