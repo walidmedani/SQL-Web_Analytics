@@ -30,7 +30,7 @@ ORDER BY 4 DESC;
 |socialbook|desktop_targeted|https://www.socialbook.com|5590|
 |socialbook|pilot|https://www.socialbook.com|5095|
 
-
+&nbsp;
 # Finding Traffic Source Conversion
 This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
 
