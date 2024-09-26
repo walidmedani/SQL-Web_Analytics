@@ -77,7 +77,7 @@ LEFT JOIN website_pageviews wp
 	
 SELECT * FROM sessions_w_landing_page_demo;
 ```
-
+```MYSQL	
 CREATE TEMPORARY TABLE bounced_sessions_only
 SELECT
 	sessions_w_landing_page_demo.website_session_id,
@@ -93,7 +93,8 @@ HAVING
 	count(wp.website_pageview_id) = 1;
 
 SELECT * FROM bounced_sessions_only;
-
+```
+```MYSQL	
 SELECT	
 	sessions_w_landing_page_demo.landing_page,
 	COUNT(DISTINCT sessions_w_landing_page_demo.website_session_id) AS sessions,
@@ -104,10 +105,10 @@ FROM sessions_w_landing_page_demo
 		ON sessions_w_landing_page_demo.website_session_id = bounced_sessions_only.website_session_id
 GROUP BY 
 	sessions_w_landing_page_demo.landing_page;
-
+```
 
 -- Conversion funnels & conversion paths
-
+```MYSQL	
 SELECT 
 	website_session_id,
 	max(products_page) AS product_made_it,
@@ -133,8 +134,8 @@ ORDER BY
 ) AS pageview_level
 GROUP BY 
 	website_session_id;
-
-
+```
+```MYSQL	
 CREATE TEMPORARY TABLE session_level_made_it_flags_demo
 SELECT 
 	website_session_id,
@@ -161,14 +162,16 @@ ORDER BY
 ) AS pageview_level
 GROUP BY 
 	website_session_id;
-
+```
+```MYSQL	
 SELECT 
 	count(DISTINCT website_session_id) AS sessions,
 	count(DISTINCT CASE WHEN product_made_it = 1 THEN website_session_id ELSE NULL END) AS to_products,
 	count(DISTINCT CASE WHEN mrfuzzy_made_it = 1 THEN website_session_id ELSE NULL END) AS to_mrfuzzy,
 	count(DISTINCT CASE WHEN cart_made_it = 1 THEN website_session_id ELSE NULL END) AS to_cart
 FROM session_level_made_it_flags_demo;
-
+```
+```MYSQL	
 SELECT 
 	count(DISTINCT website_session_id) AS sessions,
 	count(DISTINCT CASE WHEN product_made_it = 1 THEN website_session_id ELSE NULL END)
@@ -178,3 +181,4 @@ SELECT
 	count(DISTINCT CASE WHEN cart_made_it = 1 THEN website_session_id ELSE NULL END)
 		/ count(DISTINCT CASE WHEN mrfuzzy_made_it = 1 THEN website_session_id ELSE NULL END) AS click_cart
 FROM session_level_made_it_flags_demo;
+```
