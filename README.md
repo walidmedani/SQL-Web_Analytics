@@ -31,3 +31,4 @@ graph TD;
     Pageviews-->session_id;
     Pageviews-->URL;
 ```
+![ER Diagram](erdiagram.png)
