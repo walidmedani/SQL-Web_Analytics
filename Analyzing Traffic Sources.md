@@ -17,7 +17,7 @@ GROUP BY 1,
 		 3
 ORDER BY 4 DESC;
 ```
-### Result
+#### Result:
 |utm_source|utm_campaign|http_referer|sessions|
 |----------|------------|------------|--------|
 |gsearch|nonbrand|https://www.gsearch.com|3613|
@@ -45,19 +45,14 @@ GROUP BY
 	1
 ORDER BY sessions DESC;
 ```
-```MYSQL
-SELECT 
-	count(DISTINCT ws.website_session_id) AS sessions ,
-	count(DISTINCT o.order_id) AS orders,
-	count(DISTINCT o.order_id)/count(DISTINCT ws.website_session_id) AS session_to_orders_conv_rt
-FROM website_sessions ws 
-	LEFT JOIN orders o 
-	ON o.website_session_id = ws.website_session_id
-WHERE ws.created_at < '2012-04-14'
-	  AND ws.utm_source = 'gsearch'
-	  AND ws.utm_campaign = 'nonbrand'
-ORDER BY 3 DESC;
-```
+#### Result:
+|utm_content|sessions|orders|session_to_orders_conv_rt|
+|-----------|--------|------|-------------------------|
+|g_ad_1|975|35|0.0359|
+||18|0|0.0000|
+|g_ad_2|6|0|0.0000|
+|b_ad_2|2|0|0.0000|
+
 -- Traffic source trending
 ```MYSQL
 SELECT
