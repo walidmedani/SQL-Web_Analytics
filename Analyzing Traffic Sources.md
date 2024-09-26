@@ -1,9 +1,9 @@
 # Finding Top Traffic Sources
 This query identifies the top traffic sources driving sessions to the website by grouping data by source, campaign, and referrer. It helps determine which marketing campaigns and traffic sources were most effective in generating website visits.
 
-utm_source: Source of traffic (e.g., Google, Facebook).
-utm_campaign: Campaign name associated with the traffic.
-http_referer: The URL from where the session originated.
+- utm_source: Source of traffic (e.g., Google, Facebook).
+- utm_campaign: Campaign name associated with the traffic.
+- http_referer: The URL from where the session originated.
 ```MYSQL
 SELECT 
 	ws.utm_source ,
@@ -60,6 +60,7 @@ ORDER BY sessions DESC;
 |social_ad_2|5590|288|0.0515|
 |social_ad_1|5095|55|0.0108|
 
+&nbsp;
 ## Traffic Source Trending
 ```MYSQL
 SELECT 
@@ -85,6 +86,7 @@ GROUP BY
 |2012-04-29|681|
 |2012-05-06|399|
 
+&nbsp;
 ## Bid Optimization For Paid Traffic
 ```MYSQL
 SELECT
@@ -106,6 +108,7 @@ ORDER BY 3 DESC;
 |desktop|195155|16037|0.0822|
 |mobile|87551|2785|0.0318|
 
+&nbsp;
 ## Trending w/ Granular Segments
 ```MYSQL
 SELECT 
