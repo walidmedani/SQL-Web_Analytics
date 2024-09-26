@@ -17,6 +17,18 @@ GROUP BY 1,
 		 3
 ORDER BY 4 DESC;
 ```
+|yr|mo|orders|sessions|
+|--|--|------|--------|
+|2012|3|60|1879|
+|2012|4|99|3734|
+|2012|5|108|3736|
+|2012|6|140|3963|
+|2012|7|169|4249|
+|2012|8|228|6097|
+|2012|9|287|6546|
+|2012|10|371|8183|
+|2012|11|618|14011|
+|2012|12|506|10072|
 
 # Finding traffic source conversion
 This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
