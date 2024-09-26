@@ -20,9 +20,9 @@ graph TD;
     Website_Sessions-->is_repeat_session;
     Website_Sessions-->utm_source;
     Website_Sessions-->utm_campaign;
-    Web_Sessions-->utm_content;
-    Web_Sessions-->device_type;
-    Web_Sessions-->http_referer;
+    Website_Sessions-->utm_content;
+    Website_Sessions-->device_type;
+    Website_Sessions-->http_referer;
 ```
 ```mermaid
 graph TD;
