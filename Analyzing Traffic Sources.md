@@ -11,7 +11,7 @@ SELECT
 	ws.http_referer ,
 	count(DISTINCT ws.website_session_id) AS sessions
 FROM website_sessions ws
-WHERE ws.created_at < '2012-04-12'
+WHERE ws.created_at
 GROUP BY 1,
 		 2,
 		 3
@@ -20,12 +20,16 @@ ORDER BY 4 DESC;
 #### Result:
 |utm_source|utm_campaign|http_referer|sessions|
 |----------|------------|------------|--------|
-|gsearch|nonbrand|https://www.gsearch.com|3613|
-||||28|
-|||https://www.gsearch.com|27|
-|gsearch|brand|https://www.gsearch.com|26|
-|||https://www.bsearch.com|7|
-|bsearch|brand|https://www.bsearch.com|7|
+|gsearch|nonbrand|https://www.gsearch.com|282706|
+|bsearch|nonbrand|https://www.bsearch.com|54909|
+||||39917|
+|||https://www.gsearch.com|35202|
+|gsearch|brand|https://www.gsearch.com|33329|
+|||https://www.bsearch.com|8209|
+|bsearch|brand|https://www.bsearch.com|7914|
+|socialbook|desktop_targeted|https://www.socialbook.com|5590|
+|socialbook|pilot|https://www.socialbook.com|5095|
+
 
 # Finding Traffic Source Conversion
 This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
@@ -40,7 +44,7 @@ SELECT
 FROM website_sessions ws 
 	LEFT JOIN orders o 
 	ON o.website_session_id = ws.website_session_id
-WHERE ws.website_session_id BETWEEN 1000 AND 2000
+WHERE ws.website_session_id
 GROUP BY 
 	1
 ORDER BY sessions DESC;
@@ -48,23 +52,15 @@ ORDER BY sessions DESC;
 #### Result:
 |utm_content|sessions|orders|session_to_orders_conv_rt|
 |-----------|--------|------|-------------------------|
-|g_ad_1|975|35|0.0359|
-||18|0|0.0000|
-|g_ad_2|6|0|0.0000|
-|b_ad_2|2|0|0.0000|
+|g_ad_1|282706|18822|0.0666|
+||83328|6118|0.0734|
+|b_ad_1|54909|3818|0.0695|
+|g_ad_2|33329|2511|0.0753|
+|b_ad_2|7914|701|0.0886|
+|social_ad_2|5590|288|0.0515|
+|social_ad_1|5095|55|0.0108|
 
--- Traffic source trending
-```MYSQL
-SELECT
-	YEAR(ws.created_at) ,
-	WEEK(ws.created_at) ,
-	MIN(DATE(ws.created_at)) AS week_start , 
-	count(DISTINCT ws.website_session_id) 
-FROM website_sessions ws 
-WHERE ws.website_session_id BETWEEN 100000 AND 115000
-GROUP BY 1,2;
-```
-
+## Traffic Source Trending
 ```MYSQL
 SELECT 
 	MIN(DATE(ws.created_at)) AS week_start , 
@@ -77,7 +73,19 @@ GROUP BY
 	YEAR(ws.created_at) ,
 	WEEK(ws.created_at);
 ```
--- Bid optimization for paid traffic
+#### Result:
+|week_start|sessions|
+|----------|--------|
+|2012-03-19|896|
+|2012-03-25|956|
+|2012-04-01|1152|
+|2012-04-08|983|
+|2012-04-15|621|
+|2012-04-22|594|
+|2012-04-29|681|
+|2012-05-06|399|
+
+## Bid Optimization For Paid Traffic
 ```MYSQL
 SELECT
 	ws.device_type ,
