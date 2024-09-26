@@ -1,4 +1,4 @@
-# Finding top traffic sources
+# Finding Top Traffic Sources
 This query identifies the top traffic sources driving sessions to the website by grouping data by source, campaign, and referrer. It helps determine which marketing campaigns and traffic sources were most effective in generating website visits.
 
 utm_source: Source of traffic (e.g., Google, Facebook).
@@ -17,6 +17,7 @@ GROUP BY 1,
 		 3
 ORDER BY 4 DESC;
 ```
+## Result
 |yr|mo|orders|sessions|
 |--|--|------|--------|
 |2012|3|60|1879|
@@ -30,7 +31,7 @@ ORDER BY 4 DESC;
 |2012|11|618|14011|
 |2012|12|506|10072|
 
-# Finding traffic source conversion
+# Finding Traffic Source Conversion
 This query evaluates conversion rates by traffic content, determining how effectively different marketing messages or content converted sessions into orders. The session_to_orders_conv_rt measures the effectiveness of traffic in driving sales.
 
 LEFT JOIN with orders ensures all sessions are included, even those without an order.
