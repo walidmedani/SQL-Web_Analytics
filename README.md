@@ -14,6 +14,6 @@ Dataset Description
 
 ```mermaid
 graph TD;
-    Sessions-->Orders;
-    Sessions-->Pageviews;
+    Web_Sessions-->Orders;
+    Web_Sessions-->Pageviews;
 ```
